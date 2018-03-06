@@ -1,0 +1,64 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-login">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+      .login {
+        width: 400px;
+        height: 300px;
+        padding: 10px;
+        margin: 30px auto;
+        background-color: #fff;
+      }
+
+      paper-button {
+        margin-top: 10px;
+        background-color: lightblue;
+      }
+
+    </style>
+
+    <div class="login">
+      <h3 class="form-title">Login Form</h3>
+      <iron-form id="loginForm">
+        <form  action="/login" method="post">
+          <paper-input label="Username" name="username"></paper-input>
+          <paper-input label="Password" name="password" type="password"></paper-input>
+          <paper-button raised id="loginButton" type="submit" on-tap="_login">Login</paper-button>
+        </form>
+      </iron-form>
+
+    </div>
+  </template>
+
+  <script>
+    class MyLogin extends Polymer.Element {
+      static get is() { return 'my-login'; }
+
+      _login(){
+        this.$.loginForm.submit();
+      }
+    }
+
+    window.customElements.define(MyLogin.is, MyLogin);
+  </script>
+</dom-module>

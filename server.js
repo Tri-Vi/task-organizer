@@ -10,8 +10,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', function(req, res){
-  res.send('Hello');
-})
+  res.sendFile("index.html", {root: '.'})
+});
+
 
 app.listen(port, function(err){
   if(err) throw err;
